@@ -1,0 +1,444 @@
+*{
+    font-family: 'Inter';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    width: 100%;
+    background: #F9F9F9;
+    position: relative;
+    display: flex;
+}
+
+#menu {
+    background: #A12520;
+    width: 245px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#menu .logo {
+    display: flex;
+    align-items: center;
+    padding: 30px 0 0 30px;
+}
+
+#menu .logo img {
+    width: 155px;
+    margin-right: 15px;
+}
+
+#menu .items {
+    margin-top: 40px;
+}
+
+#menu .items li {
+    list-style: none;
+    padding: 15px 0;
+    transition: 0.3s ease;
+}
+
+#menu .items .active {
+    background-color: #572826;
+}
+
+#menu .items li:hover {
+    background: #572826;
+    cursor: pointer;
+}
+
+#menu .items li a {
+    color: rgb(134, 141, 151);
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    margin: 0 10px 0 25px;
+    text-decoration: none;
+    color: rgb(203, 209, 218);
+    font-weight: 300px;
+    transition: 0.3s ease;
+}
+
+#menu .items li:hover a {
+    color: #f3f4f6;
+}
+
+#interface {
+    width: calc(100% - 240px);
+    margin-left: 245px;
+    position: relative;
+}
+
+#interface .col-6 {
+    padding-bottom: 20px;
+}
+
+#interface .navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffff;
+    padding: 15px 30px;
+    border-bottom: 3px solid #000000;
+    position: fixed;
+    width: calc(100% - 240px);
+}
+
+#interface .navigation .search {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 14px;
+    border: 1px solid #d7dbe6;
+    border-radius: 4px;
+}
+
+#interface .navigation .search i {
+    margin: 4px;
+}
+
+#interface .navigation .search input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+#interface .navigation .profile {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#interface .navigation .profile i{
+    font-size: 19px;
+    font-weight: 400;
+}
+
+.n1{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#menu-btn{
+    display: none;
+    color: #000000;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+
+}
+
+.i-name {
+    color: #000000;
+    padding: 30px 30px 0 30px;
+    font-size: 24px;
+    font-weight: 700;
+    /* margin-top: 70px; */
+}
+
+.info {
+    color: #000000;
+    padding: 30px 30px 0 30px;
+    font-size: 18px;
+    font-weight: 700;
+    /* margin-top: 70px; */
+}
+
+#interface h4 {
+    font-size: 22px;
+}
+
+.uptask h4{
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+.uptask {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.uptask .uptaskspace{
+    margin-top: 30px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.uptask .uptaskspace a{
+    color: #000000;
+    text-decoration: none;
+}
+
+#interface .uptask a:hover,
+#interface .uptask a.active{
+    color: #A12520;
+}
+
+#interface .uptask a.active::after,
+#interface .uptask a:hover::after{
+    content: "";
+    width: 30%;
+    height: 5px;
+    background: #A12520;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+
+hr{
+    margin-top: 5px;
+    border: 1px solid #000000;
+    width: 1219px;
+}
+  
+
+.values {
+    padding: 30px 30px 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.values .val-box {
+    background: #ffff;
+    width: 235px;
+    padding: 16px 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.values .val-box h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.board {
+    width: 94%;
+    margin: 30px 0 30px 30px;
+    overflow: auto;
+    background-color: #ffff;
+    border-radius: 8px;
+}
+
+.board img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.board h5 {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.board p {
+    font-weight: 400;
+    font-size: 13px;
+    color: #787d8d;
+}
+
+.board .tbody,
+.board .edit,
+.board .delete {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: start;
+    display: inline-block;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tr {
+    border-bottom: #eef0f3;
+}
+
+thead td {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 400;
+    background: #f9fafb;
+    text-align: start;
+    padding: 15px;
+}
+
+tbody tr td {
+    padding: 10px 15px;
+}
+
+.active .not{
+    background-color: red;
+    padding: 2px 10px;
+    display: inline-block;
+    border-radius: 40px;
+    color: #2b2b2b;
+}
+
+.active .done{
+    background-color: #d7fada;
+    padding: 2px 10px;
+    display: inline-block;
+    border-radius: 40px;
+    color: #2b2b2b;
+}
+
+.active .prog{
+    background-color: #FFC107;
+    padding: 2px 10px;
+    display: inline-block;
+    border-radius: 40px;
+    color: #2b2b2b;
+}
+
+.edit a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #0a009c;
+    font-weight: 600;
+}
+
+.delete a{
+    text-decoration: none;
+    font-size: 14px;
+    color: red;
+    font-weight: 600;
+}
+
+@media (max-width: 769px) {
+    #menu {
+        width: 270px;
+        position: fixed;
+        left: -270px;
+        transition: 0.3s ease;
+    }
+
+    #menu .active {
+        left: 0px;
+    }
+
+    #menu-btn {
+        display: initial;
+    }
+
+    #interface {
+        width: 100%;
+        margin-left: 0px;
+        display: inline-block;
+        transition: 0.3s ease;
+    }
+
+    #menu.active~ #interface {
+        width: calc(100% - 270px);
+        margin-left: 270px;
+        transition: 0.3s ease;
+    }
+
+    #interface .navigation{
+        width: 100%;
+    }
+
+    .values {
+        padding: 30px 30px 0 30px;
+        justify-content: flex-start;
+    }
+
+    .values .val-box {
+        padding: 16px 20px;
+        margin: 10px 20px 10px 0;
+    }
+
+    .board {
+        width: 92%;
+        pad: 0;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+}
+
+@media (max-width:477px) {
+    #interface .navigation {
+        padding: 15px;
+    }
+
+    #interface .navigation .search input {
+        width: 150px;
+    }
+
+    .i-name {
+        padding: 30px 15px 0 15px;
+    }
+
+    .values {
+        padding: 15px 15px 0 15px;
+    }
+
+    .values .val-box {
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    .board {
+        margin: 30px 15px 30px 15px;
+    }
+}
+
+/*fotrm edit*/
+#interface .radio{
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+#interface .form-check{
+    padding-bottom: 10px;
+}
+
+#interface .btn{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.text {
+    padding-left: 30px;
+    width: 25%;
+}
+
+/* Profile */
+.emil{
+    padding-left: 25px;
+}
+
+.infoimel{
+    padding-left: 80px;
+}
+
+/* #interface .info{
+    padding-top: 60px;
+    margin-left: 25px;
+} */
+
+/*Ubah data*/
+.change{
+    padding-top: 65px;
+    padding-left: 25px;
+}

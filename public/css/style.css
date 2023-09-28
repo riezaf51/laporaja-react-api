@@ -1,0 +1,189 @@
+*{
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    background: #ffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+#navbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar li{
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+#navbar li a{
+    text-decoration: none;
+    font-size:  16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+
+#navbar li a:hover,
+#navbar li a.active{
+    color: #A12520;
+}
+
+#navbar li a.active::after,
+#navbar li a:hover::after{
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: #A12520;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+
+.px-3 .text{
+    display: flex;
+    align-items: center;
+    width: 503px;
+    height: 48px;
+    left: 468px;
+    top: 195px;
+
+    font-style: normal;
+    font-weight: 800;
+    font-size: 30px;
+    
+    color: #A12520;
+}
+
+.login{
+    height: 100vh;
+}
+
+.header h1{
+    font-style: normal;
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 73px;
+/* identical to box height */
+    color: #000000;
+
+}
+
+.header .gis {
+    font-size: 55px;
+}
+
+.header p {
+    
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 31px;
+
+    color: #837E7E;
+}
+
+.header p a{
+    font-weight: 600;
+}
+
+.col-6{
+    padding-top: 180px;
+    
+}
+
+.login-form input{
+    
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 20px;
+    
+    /* identical to box height */
+
+
+    color: #837E7E
+}
+
+.login-form a {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #837E7E;
+    margin-top: 0 20px;
+    display: block;
+    padding-top: 20px;
+}
+
+.login-form .signin {
+    width: 100%;
+    height: 54px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 23px;
+    border: none;
+
+}
+
+.login-form p{
+    padding-top: 10px;
+    color: grey;
+    font-weight: bold;
+    text-align: center;
+}
+
+.login-form .masuk{
+    color: grey;
+    text-align: center;
+    margin-top: 20px; 
+}
+
+.container{
+    padding-bottom: 0px;
+}
+
+/*form lapor*/
+.px-3 {
+    width: 50%; /* Menetapkan lebar elemen "form" sebesar 50% */
+    margin: auto;
+}
+
+#textsatu h1{
+    color: #A12520;
+    font-weight: 800;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#but{
+    padding-top: 10px;
+    width: 25%; /* Menetapkan lebar elemen "but" sebesar 50% */
+    margin: auto; /* Menempatkan elemen "but" di tengah */
+    display: flex;
+}
+
+#but button:first-child {
+    margin-right: 10px;
+}
+
+.px-3 .form-select {
+    margin-bottom: 18px;
+    color: #837E7E;
+}
