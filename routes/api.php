@@ -23,7 +23,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function() {
     Route::get('status', function() {
         return response()->json(['message' => 'Server is active']);
     });
-    Route::apiResource('users', UserController::class)->middleware('auth:sanctum');
+    Route::apiResource('users', UserController::class)->except('store')->middleware('auth:sanctum');
+    Route::post('users', [UserController::class, 'store']);
     Route::post('login', [UserController::class, 'login']);
     Route::get('logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
     Route::group(['middleware' => ['auth:sanctum']], function() {
