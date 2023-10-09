@@ -23,15 +23,18 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function() {
     Route::get('status', function() {
         return response()->json(['message' => 'Server is active']);
     });
-    Route::apiResource('users', UserController::class)->except('store')->middleware('auth:sanctum');
     Route::post('users', [UserController::class, 'store']);
     Route::post('login', [UserController::class, 'login']);
-    Route::get('logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
+
     Route::group(['middleware' => ['auth:sanctum']], function() {
+        Route::apiResource('users', UserController::class)->except('store');
+        Route::get('logout', [UserController::class, 'logout']);
         Route::apiResource('laporan', LaporanController::class)->except('index', 'show');
+        Route::apiResource('kontakpenting', KontakController::class)->except('index', 'show');
     });
+    
     Route::apiResource('laporan', LaporanController::class)->only('index', 'show');
-    Route::apiResource('kontakpenting', KontakController::class);
+    Route::apiResource('kontakpenting', KontakController::class)->only('index', 'show');
 });
 
 
