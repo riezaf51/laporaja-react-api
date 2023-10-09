@@ -24,6 +24,8 @@ class Laporan extends Model
 
     protected $hidden = [];
 
+    protected $with = ['user', 'admin'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
