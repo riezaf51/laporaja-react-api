@@ -28,6 +28,31 @@ class LaporanController extends Controller
     }
 
     /**
+     * Display a listing of the resource owned by specific user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_user(Request $request)
+    {
+        if (!$request->has('user_id')) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'please specify the user_id query',
+            ], 400);
+        }
+        $user_id = $request->query('user_id');
+        $jenis = $request->query('jenis');
+        
+        $data = new LaporanCollection(Laporan::where('user_id', $user_id)->where('status','like', '%'.$jenis.'%')->get());
+
+        if ($data) {
+            return ApiFormatter::createApi(200, $data, $data->count());
+        } else {
+            return ApiFormatter::createApi(400);
+        }
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

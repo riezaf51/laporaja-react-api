@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 Use App\Http\Controllers\Api\UserController;
+Use App\Http\Controllers\Api\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function() {
         Route::get('logout', [UserController::class, 'logout']);
         Route::apiResource('laporan', LaporanController::class)->except('index', 'show');
         Route::apiResource('kontakpenting', KontakController::class)->except('index', 'show');
+        Route::apiResource('laporan', LaporanController::class)->only('update')->middleware('admin');
     });
     
     Route::apiResource('laporan', LaporanController::class)->only('index', 'show');
+    Route::get('user/laporan', [LaporanController::class, 'index_user']);
     Route::apiResource('kontakpenting', KontakController::class)->only('index', 'show');
 });
 
