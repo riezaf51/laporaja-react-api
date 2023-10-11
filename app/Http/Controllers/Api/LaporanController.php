@@ -123,7 +123,7 @@ class LaporanController extends Controller
                 'kabkota' => 'required',
                 'kecamatan' => 'required',
                 'deskripsi' => 'required',
-                'status' => 'required'
+                'status' => 'required | in:diproses,selesai,ditolak'
             ]);
 
             $laporan = Laporan::findOrFail($id);
@@ -152,14 +152,56 @@ class LaporanController extends Controller
     }
 
     /**
+     * Respond to user's report
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function respond(Request $request, $id)
+    {
+        try {
+            $admin_id = $request->user()->id;
+            $request->validate([
+                'status' => 'required | in:diproses,selesai,ditolak',
+            ]);
+
+            $laporan = Laporan::findOrFail($id);
+
+            $laporan->update([
+                'admin_id' => $admin_id,
+                'status' => $request->status,
+            ]);
+
+            $data = Laporan::where('id','=',$laporan->id)->get();
+
+            if ($data) {
+                return ApiFormatter::createApi(200, $data);
+            } else {
+                return ApiFormatter::createApi(400);
+            }
+        } catch (Exception $error) {
+            return ApiFormatter::createApi(400);
+        }
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        $user = $request->user();
+        
         $laporan = Laporan::findOrFail($id);
+
+        if ($user->id != $laporan->user_id && !$user->isAdmin()) {
+            return response()->json([
+                'message' => 'You are not allowed to delete this report',
+            ], 401);
+        }
 
         $data = $laporan->delete();
         

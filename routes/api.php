@@ -26,13 +26,16 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function() {
     });
     Route::post('users', [UserController::class, 'store']);
     Route::post('login', [UserController::class, 'login']);
+    
 
     Route::group(['middleware' => ['auth:sanctum']], function() {
-        Route::apiResource('users', UserController::class)->except('store');
+        Route::apiResource('users', UserController::class)->except('index','store','update');
+        Route::put('users', [UserController::class, 'update']);
         Route::get('logout', [UserController::class, 'logout']);
-        Route::apiResource('laporan', LaporanController::class)->except('index', 'show');
+        Route::apiResource('laporan', LaporanController::class)->except('index', 'show', 'update');
         Route::apiResource('kontakpenting', KontakController::class)->except('index', 'show');
-        Route::apiResource('laporan', LaporanController::class)->only('update')->middleware('admin');
+        // Route::apiResource('laporan', LaporanController::class)->only('update')->middleware('admin');
+        Route::put('laporan/{id}', [LaporanController::class, 'respond'])->middleware('admin');
     });
     
     Route::apiResource('laporan', LaporanController::class)->only('index', 'show');

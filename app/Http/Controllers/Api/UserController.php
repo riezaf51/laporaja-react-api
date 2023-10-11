@@ -90,14 +90,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
             'email' => 'required|unique:users,email|email:rfc,dns',
             'password' => 'min:8|required'
         ]);
         
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($request->user()->id);
         if (Hash::check($request->password, $user->password)) {
             $user->email = $request->email;
             $user->save();
