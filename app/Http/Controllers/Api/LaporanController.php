@@ -162,6 +162,7 @@ class LaporanController extends Controller
     {
         try {
             $admin_id = $request->user()->id;
+            
             $request->validate([
                 'status' => 'required | in:diproses,selesai,ditolak',
             ]);
@@ -171,6 +172,7 @@ class LaporanController extends Controller
             $laporan->update([
                 'admin_id' => $admin_id,
                 'status' => $request->status,
+                'tanggapan' => $request->tanggapan,
             ]);
 
             $data = Laporan::where('id','=',$laporan->id)->get();
